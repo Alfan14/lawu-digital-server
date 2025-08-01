@@ -7,7 +7,6 @@ import { fileURLToPath } from "url";
 import { Server } from "socket.io";
 import path from "path";
 import helmet from "helmet";
-import bodyParser from "body-parser";
 
 import adminRoutes from "./routes/adminRoute.mjs";
 import cloudinaryController from "./controllers/cloudinaryControllers.mjs";
@@ -37,7 +36,8 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization']
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
+app.use(helmet());
 
 // Middleware
 app.use(express.json());
