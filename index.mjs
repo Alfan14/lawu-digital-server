@@ -41,13 +41,10 @@ app.use(cors());
 
 // Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// API Routes
 app.use('/admin/', adminRoutes);
 
 app.use('/api/', cloudinaryController);
-
 
 app.get("/", (req, res) => {
   console.log("Halo kamu sampai default Route");
