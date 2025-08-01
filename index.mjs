@@ -44,8 +44,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // API Routes
-app.use(express.static('public'));
-app.use('/admin', adminRoutes);
+app.use('/admin/', adminRoutes);
 
 app.use('/api/', cloudinaryController);
 

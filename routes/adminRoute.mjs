@@ -6,12 +6,12 @@ const router = express.Router();
 
 dotenv.config(); 
 
-router.post('/get', async (req, res) => {
+router.get('/get', async (req, res) => {
   pool.query('SELECT * FROM news_post ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
+    res.status(200).json(results.rows)
   })
 });
 
@@ -22,7 +22,7 @@ router.get('/get/:id', async (req, res) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
+    res.status(200).json(results.rows)
   })
 });
 
