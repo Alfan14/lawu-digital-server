@@ -16,7 +16,7 @@ router.get('/get', async (req, res) => {
 });
 
 router.get('/get/:id', async (req, res) => {
-  const id = parseInt(request.params.id)
+  const id = parseInt(req.params.id)
 
   pool.query('SELECT * FROM news_post WHERE id = $1', [id], (error, results) => {
     if (error) {
