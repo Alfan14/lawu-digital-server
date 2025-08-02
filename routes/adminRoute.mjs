@@ -28,10 +28,14 @@ router.get('/get/:id', async (req, res) => {
 
 router.post('/post', async (req, res) => {
     try {
-        const {
+        const{
             title, slug, excerpt, content, cover_image,
             author_name, author_image, category, published_at, tags
         } = req.body;
+
+        const { payload } = req.body;
+
+        console.log("Isi data dikirim dari client:", payload)
 
         const tagArray = tags?.split(',').map(t => t.trim());
 
