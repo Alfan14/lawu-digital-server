@@ -26,6 +26,18 @@ router.get('/get/:id', async (req, res) => {
   })
 });
 
+router.get('/get/:slug', async (req, res) => {
+  const slug = parseInt(req.params.slug)
+
+  pool.query('SELECT * FROM news_post WHERE slug = $1', [slug], (error, results) => {
+    if (error) {
+      throw error
+    }
+    res.status(200).json(results.rows)
+  })
+});
+
+
 router.post('/post', async (req, res) => {
   try {
     const {
