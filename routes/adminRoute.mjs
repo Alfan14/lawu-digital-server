@@ -51,11 +51,11 @@ router.post('/post', async (req, res) => {
     await pool.query(
       `INSERT INTO news_post
             (title, slug, excerpt, content, cover_image, author_name, author_image, category, published_at, tags, is_published)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, true)`,
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, true)`,
       [title, slug, excerpt, content, cover_image, author_name, author_image, category, published_at, tagArray]
     );
 
-    res.send(`<h2>Berita berhasil ditambahkan!</h2><a href="/admin.html">Kembali</a>`);
+    res.send(`Berita berhasil ditambahkan!`);
   } catch (err) {
     console.error(err);
     res.status(500).send("Gagal menambahkan berita");
