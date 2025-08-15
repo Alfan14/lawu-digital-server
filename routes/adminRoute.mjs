@@ -25,16 +25,15 @@ router.get('/get/:id', async (req, res) => {
     res.status(200).json(results.rows)
   })
 });
-
-router.get('/get/:slug', async (req, res) => {
-  const slug = parseInt(req.params.slug)
-
-  pool.query('SELECT * FROM news_post AS np WHERE np.slug = $1', [slug], (error, results) => {
+router.get('/get-slug/:slug', async (req, res) => {
+  const slug = req.params.slug; 
+  
+  pool.query('SELECT * FROM news_post WHERE slug = $1', [slug], (error, results) => {
     if (error) {
-      throw error
+      throw error;
     }
-    res.status(200).json(results.rows)
-  })
+    res.status(200).json(results.rows);
+  });
 });
 
 
